@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # miftah_reservasi_bioskop
 =======
 # Miftahul_Huda_Guntara_Challenge_4
@@ -7,6 +8,9 @@
 =======
 # miftahulhudaguntara_reservasi_bioskop
 >>>>>>> 8c035a5 (Initial commit)
+=======
+# Miftahul_Huda_Guntara_Challenge_2
+>>>>>>> d12d76b (Upload New File)
 
 
 
@@ -23,14 +27,22 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop.git
+=======
+git remote add origin https://gitlab.com/km3-bej-1/challenge/02/miftahul_huda_guntara_challenge_2.git
+>>>>>>> d12d76b (Upload New File)
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop/-/settings/integrations)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/km3-bej-1/challenge/02/miftahul_huda_guntara_challenge_2/-/settings/integrations)
+>>>>>>> d12d76b (Upload New File)
 
 ## Collaborate with your team
 
@@ -99,6 +111,9 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> ef93a6c (Upload New File)
 =======
 >>>>>>> 8c035a5 (Initial commit)
+=======
+>>>>>>> d12d76b (Upload New File)
