@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # miftah_reservasi_bioskop
 =======
 # Miftahul_Huda_Guntara_Challenge_4
 
+=======
+# miftahulhudaguntara_reservasi_bioskop
+>>>>>>> 8c035a5 (Initial commit)
 
 
 
@@ -94,4 +98,7 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+<<<<<<< HEAD
 >>>>>>> ef93a6c (Upload New File)
+=======
+>>>>>>> 8c035a5 (Initial commit)
