@@ -20,6 +20,7 @@ public class FilmServiceImpl implements FilmService {
         this.filmRepository = filmRepository;
     }
 
+
     @Override
     public FilmEntity create(FilmEntity filmEntity) {
         return filmRepository.save(filmEntity);
@@ -72,4 +73,18 @@ public class FilmServiceImpl implements FilmService {
     public FilmEntity mapToEntity(FilmDTO filmDTO) {
         return mapper.convertValue(filmDTO, FilmEntity.class);
     }
+
+
+//    @Override
+//    public void insertFilm(FilmEntity filmEntity){
+//        filmRepository.save(filmEntity);
+//    }
+
+//    @Override
+//    public List<Film> getAllFilm(){
+//        return filmRepository.findAll();
+//    }
+
+
+
 }

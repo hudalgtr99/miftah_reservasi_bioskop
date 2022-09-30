@@ -3,6 +3,7 @@ package com.example.reservasibioskop.controller;
 import com.example.reservasibioskop.dto.FilmDTO;
 import com.example.reservasibioskop.entity.FilmEntity;
 import com.example.reservasibioskop.service.FilmService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class FilmController {
     }
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public FilmDTO create(@RequestBody FilmDTO request){
         final FilmEntity filmEntity = filmService.mapToEntity(request);
         final FilmEntity result = filmService.create(filmEntity);

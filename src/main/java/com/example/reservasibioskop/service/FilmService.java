@@ -7,6 +7,10 @@ import java.util.List;
 public interface FilmService {
 
     FilmEntity create(FilmEntity filmEntity);
+
+    //public void insertFilm(FilmEntity filmEntity);
+    //public List<Film> getAllFilm();
+
     FilmEntity update(Long code, FilmEntity filmEntity);
     Boolean delete(Long code);
     List<FilmEntity> findAll();
