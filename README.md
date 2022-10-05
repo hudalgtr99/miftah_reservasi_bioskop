@@ -2,7 +2,6 @@
 # miftah_reservasi_bioskop
 =======
 # Miftahul_Huda_Guntara_Challenge_4
-# Challenge4 ada di Branch Master
 
 
 
