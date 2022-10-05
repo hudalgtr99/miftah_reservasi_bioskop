@@ -34,10 +34,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 ```
 cd existing_repo
 <<<<<<< HEAD
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop.git
 =======
 git remote add origin https://gitlab.com/km3-bej-1/challenge/02/miftahul_huda_guntara_challenge_2.git
 >>>>>>> d12d76b (Upload New File)
+=======
+git remote add origin https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop.git
+>>>>>>> 09bfe9a (Update README.md)
 git branch -M main
 git push -uf origin main
 ```
@@ -45,10 +49,14 @@ git push -uf origin main
 ## Integrate with your tools
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop/-/settings/integrations)
 =======
 - [ ] [Set up project integrations](https://gitlab.com/km3-bej-1/challenge/02/miftahul_huda_guntara_challenge_2/-/settings/integrations)
 >>>>>>> d12d76b (Upload New File)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/km3-bej-1/challenge/04-08/miftahulhudaguntara_reservasi_bioskop/-/settings/integrations)
+>>>>>>> 09bfe9a (Update README.md)
 
 ## Collaborate with your team
 
