@@ -6,6 +6,9 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -28,23 +31,23 @@ public class ScheduleEntity {
     private FilmEntity filmEntity;
 
     @Column(name = "show_date")
-    private Date showDate;
+    private LocalDate showDate;
 
     @Column(name = "start_time")
-    private Time startTime;
+    private LocalTime startTime;
 
     @Column(name = "end_time")
-    private Time endTime;
+    private LocalTime endTime;
 
     private BigDecimal price;
 
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @Override
     public boolean equals(Object o) {
