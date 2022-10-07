@@ -37,7 +37,7 @@ public class SeatDetailEntity{
     private SeatEntity seatEntity;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, insertable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
