@@ -1,13 +1,13 @@
 package com.example.reservasibioskop.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public record UserDTO(
         Long id,
         String username,
         String email,
         String password,
-        Date createdAt,
-        Date updatedAt
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
         ) {
 }
