@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+//import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -32,7 +33,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             result.setStartTime(scheduleEntity.getStartTime());
             result.setEndTime(scheduleEntity.getEndTime());
             result.setPrice(scheduleEntity.getPrice());
-            result.setUpdatedAt(scheduleEntity.getUpdatedAt());
+//            result.setUpdatedAt(LocalDateTime.now());
             scheduleRepository.save(scheduleEntity);
         }
         return null;

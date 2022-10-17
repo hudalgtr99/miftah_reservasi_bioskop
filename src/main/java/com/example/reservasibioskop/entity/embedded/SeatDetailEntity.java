@@ -1,13 +1,14 @@
 package com.example.reservasibioskop.entity.embedded;
 
+//import org.hibernate.Hibernate;
+//import java.util.Objects;
+
 import com.example.reservasibioskop.entity.SeatEntity;
 import com.example.reservasibioskop.entity.StudioEntity;
 import lombok.*;
-import org.hibernate.Hibernate;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Objects;
+
 
 @Entity
 @Getter
@@ -36,24 +37,22 @@ public class SeatDetailEntity{
     @JoinColumn(name = "Seats_id")
     private SeatEntity seatEntity;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        SeatDetailEntity that = (SeatDetailEntity) o;
-        return seatDetailId != null && Objects.equals(seatDetailId, that.seatDetailId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(seatDetailId);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+//        SeatDetailEntity that = (SeatDetailEntity) o;
+//        return seatDetailId != null && Objects.equals(seatDetailId, that.seatDetailId);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(seatDetailId);
+//    }
 }

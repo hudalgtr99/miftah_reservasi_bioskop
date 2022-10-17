@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+//import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -35,7 +36,7 @@ public class FilmServiceImpl implements FilmService {
             result.setDuration(filmEntity.getDuration());
             result.setLanguage(filmEntity.getLanguage());
             result.setShowStatus(filmEntity.getShowStatus());
-            result.setUpdatedAt(filmEntity.getUpdatedAt());
+//            result.setUpdatedAt(LocalDateTime.now());
             filmRepository.save(filmEntity);
         }
         return null;

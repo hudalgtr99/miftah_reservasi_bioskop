@@ -1,6 +1,6 @@
 package com.example.reservasibioskop.dto;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 public record FilmDTO(
         Long code,
@@ -8,9 +8,9 @@ public record FilmDTO(
         String description,
         Integer duration,
         String language,
-        Boolean showStatus,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        Boolean showStatus
+//        LocalDateTime createdAt,
+//        LocalDateTime updatedAt
         ) {
 
 }

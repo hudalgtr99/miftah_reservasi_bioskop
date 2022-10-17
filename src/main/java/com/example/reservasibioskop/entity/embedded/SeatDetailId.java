@@ -1,7 +1,6 @@
 package com.example.reservasibioskop.entity.embedded;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

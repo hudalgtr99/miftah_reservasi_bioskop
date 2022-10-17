@@ -1,14 +1,14 @@
 package com.example.reservasibioskop.entity;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+//import org.hibernate.Hibernate;
+//import java.util.Objects;
 
+import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Objects;
+//import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -39,24 +39,22 @@ public class ScheduleEntity {
 
     private BigDecimal price;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+//    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+//    private LocalDateTime createdAt;
+//
+//    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+//    private LocalDateTime updatedAt;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ScheduleEntity that = (ScheduleEntity) o;
-        return id != null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+//        ScheduleEntity that = (ScheduleEntity) o;
+//        return id != null && Objects.equals(id, that.id);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return getClass().hashCode();
+//    }
 }

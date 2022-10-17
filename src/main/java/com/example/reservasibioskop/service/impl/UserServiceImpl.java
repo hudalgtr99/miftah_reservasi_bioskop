@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+//import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService{
             result.setUsername(userEntity.getUsername());
             result.setEmail(userEntity.getEmail());
             result.setPassword(userEntity.getPassword());
-            result.setUpdatedAt(userEntity.getUpdatedAt());
+//            result.setUpdatedAt(LocalDateTime.now());
             userRepository.save(userEntity);
         }
         return null;
