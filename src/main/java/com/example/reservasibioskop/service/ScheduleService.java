@@ -1,8 +1,6 @@
 package com.example.reservasibioskop.service;
 
 import com.example.reservasibioskop.dto.ScheduleDTO;
-import com.example.reservasibioskop.dto.ScheduleDTO;
-import com.example.reservasibioskop.entity.ScheduleEntity;
 import com.example.reservasibioskop.entity.ScheduleEntity;
 
 import java.util.List;

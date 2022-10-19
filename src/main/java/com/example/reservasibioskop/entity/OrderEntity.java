@@ -34,7 +34,7 @@ public class OrderEntity {
 
     @OneToMany
     @JoinColumn(name = "SeatDetail_id")
-    private List<SeatDetailEntity> seatDetailEntity;
+    private List<SeatDetailEntity> seatDetailEntities;
 
     private Integer quantity;
 

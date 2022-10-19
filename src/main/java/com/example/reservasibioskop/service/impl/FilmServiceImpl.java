@@ -21,7 +21,6 @@ public class FilmServiceImpl implements FilmService {
         this.filmRepository = filmRepository;
     }
 
-
     @Override
     public FilmEntity create(FilmEntity filmEntity) {
         return filmRepository.save(filmEntity);
@@ -37,7 +36,7 @@ public class FilmServiceImpl implements FilmService {
             result.setLanguage(filmEntity.getLanguage());
             result.setShowStatus(filmEntity.getShowStatus());
 //            result.setUpdatedAt(LocalDateTime.now());
-            filmRepository.save(filmEntity);
+            return filmRepository.save(result);
         }
         return null;
     }

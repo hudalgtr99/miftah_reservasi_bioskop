@@ -34,7 +34,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             result.setEndTime(scheduleEntity.getEndTime());
             result.setPrice(scheduleEntity.getPrice());
 //            result.setUpdatedAt(LocalDateTime.now());
-            scheduleRepository.save(scheduleEntity);
+            return scheduleRepository.save(result);
         }
         return null;
     }

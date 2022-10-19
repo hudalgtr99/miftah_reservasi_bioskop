@@ -3,6 +3,7 @@ package com.example.reservasibioskop.controller;
 import com.example.reservasibioskop.dto.UserDTO;
 import com.example.reservasibioskop.entity.UserEntity;
 import com.example.reservasibioskop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    final UserService userService;
+
+    @Autowired
+    UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;

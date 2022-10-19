@@ -5,6 +5,7 @@ import com.example.reservasibioskop.entity.UserEntity;
 import com.example.reservasibioskop.repository.UserRepository;
 import com.example.reservasibioskop.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -15,11 +16,8 @@ import java.util.Optional;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public UserEntity create(UserEntity userEntity) {
@@ -34,7 +32,7 @@ public class UserServiceImpl implements UserService{
             result.setEmail(userEntity.getEmail());
             result.setPassword(userEntity.getPassword());
 //            result.setUpdatedAt(LocalDateTime.now());
-            userRepository.save(userEntity);
+            return userRepository.save(result);
         }
         return null;
     }

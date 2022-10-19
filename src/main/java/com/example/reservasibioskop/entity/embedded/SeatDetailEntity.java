@@ -7,7 +7,7 @@ import com.example.reservasibioskop.entity.SeatEntity;
 import com.example.reservasibioskop.entity.StudioEntity;
 import lombok.*;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 
 @Entity
@@ -37,11 +37,11 @@ public class SeatDetailEntity{
     @JoinColumn(name = "Seats_id")
     private SeatEntity seatEntity;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime updatedAt;
+//    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+//    private LocalDateTime createdAt;
+//
+//    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+//    private LocalDateTime updatedAt;
 
 //    @Override
 //    public boolean equals(Object o) {
