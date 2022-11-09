@@ -25,10 +25,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserEntity update(Long id, UserEntity userEntity) {
-        UserEntity result = findById(id);
+    public UserEntity update(String username, UserEntity userEntity) {
+        UserEntity result = findById(username);
         if (result != null) {
-            result.setUsername(userEntity.getUsername());
             result.setEmail(userEntity.getEmail());
             result.setPassword(userEntity.getPassword());
 //            result.setUpdatedAt(LocalDateTime.now());
@@ -38,10 +37,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Boolean delete(Long id) {
-        UserEntity result = findById(id);
+    public Boolean delete(String username) {
+        UserEntity result = findById(username);
         if (result != null) {
-            userRepository.deleteById(id);
+            userRepository.deleteById(username);
             return true;
         }
         return false;
@@ -53,8 +52,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserEntity findById(Long id) {
-        Optional<UserEntity> result = userRepository.findById(id);
+    public UserEntity findById(String username) {
+        Optional<UserEntity> result = userRepository.findById(username);
         return result.orElse(null);
     }
 

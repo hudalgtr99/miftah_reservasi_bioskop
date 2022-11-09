@@ -27,10 +27,10 @@ public class UserController {
         return userService.mapToDto(result);
     }
 
-    @PutMapping("/update/{id}")
-    public UserDTO update(@PathVariable Long id, @RequestBody UserDTO request){
+    @PutMapping("/update/{username}")
+    public UserDTO update(@PathVariable String username, @RequestBody UserDTO request){
         final UserEntity userEntity = userService.mapToEntity(request);
-        final UserEntity result = userService.update(id, userEntity);
+        final UserEntity result = userService.update(username, userEntity);
         return userService.mapToDto(result);
     }
     
@@ -40,8 +40,8 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Boolean delete(@PathVariable Long id){
-        return userService.delete(id);
+    @DeleteMapping("/delete/{username}")
+    public Boolean delete(@PathVariable String username){
+        return userService.delete(username);
     }
 }

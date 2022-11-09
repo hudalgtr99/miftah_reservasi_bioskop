@@ -5,7 +5,8 @@ package com.example.reservasibioskop.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -14,13 +15,25 @@ import java.time.LocalDateTime;
 @Table(name = "Users")
 public class UserEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    private Long id;
 
+    @Id
     private String username;
     private String email;
     private String password;
+
+
+//    @JoinTable(name = "USER_ROLE",
+//            joinColumns = {
+//                    @JoinColumn(name = "USER_ID")
+//            },
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "ROLE_ID")
+//            }
+//    )
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<RoleEntity> role;
 
 //    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 //    private LocalDateTime createdAt;
