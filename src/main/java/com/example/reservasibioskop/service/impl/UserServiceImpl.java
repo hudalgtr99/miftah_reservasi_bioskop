@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
 
+
     @Override
     public UserEntity create(UserEntity userEntity) {
         return userRepository.save(userEntity);

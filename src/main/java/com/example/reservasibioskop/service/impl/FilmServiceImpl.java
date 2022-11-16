@@ -5,6 +5,7 @@ import com.example.reservasibioskop.entity.FilmEntity;
 import com.example.reservasibioskop.repository.FilmRepository;
 import com.example.reservasibioskop.service.FilmService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.Optional;
 @Transactional
 public class FilmServiceImpl implements FilmService {
 
-    final FilmRepository filmRepository;
+    @Autowired
+    FilmRepository filmRepository;
 
     public FilmServiceImpl(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;

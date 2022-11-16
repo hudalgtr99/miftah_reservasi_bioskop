@@ -32,8 +32,8 @@ public class UserEntity {
 //                    @JoinColumn(name = "ROLE_ID")
 //            }
 //    )
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<RoleEntity> role;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<RoleEntity> role;
 
 //    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 //    private LocalDateTime createdAt;
