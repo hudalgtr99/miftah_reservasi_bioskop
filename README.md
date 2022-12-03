@@ -1,27 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-# miftah_reservasi_bioskop
-=======
-# Miftahul_Huda_Guntara_Challenge_4
-=======
-# Miftahul_Huda_Guntara_Challenge_5
->>>>>>> a467223 (challenge5)
-
-=======
-# miftahulhudaguntara_reservasi_bioskop
->>>>>>> 8c035a5 (Initial commit)
-=======
-# Miftahul_Huda_Guntara_Challenge_2
->>>>>>> d12d76b (Upload New File)
-=======
-# Miftahul_Huda_Guntara_Challenge_4
-# Challenge4 ada di Branch Master
-
->>>>>>> 70ff80f (Update README.md)
-
+#Miftahul Huda Guntara_Reservasi_Bioskop
 
 
 ## Getting started
