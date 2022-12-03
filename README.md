@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-#Miftahul Huda Guntara_Reservasi_Bioskop
-
+## Miftahul Huda Guntara_Isekai_Bioskop
+===========================================
 
 ## Getting started
 
