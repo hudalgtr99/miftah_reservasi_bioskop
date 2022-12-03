@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperInvoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="291c7f2e-267e-4bdb-9764-1d6747bdb0fd">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="id" class="java.lang.Long"/>
+    <field name="username" class="java.lang.String"/>
+    <field name="filmName" class="java.lang.String"/>
+    <field name="showDate" class="java.lang.String"/>
+    <field name="seatDetail" class="java.lang.String"/>
+    <field name="price" class="java.lang.Integer"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="188" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="-20" width="595" height="124" backcolor="#8F8F8F" uuid="4eefe64a-f15e-4a95-b9e5-8f73c27c8798"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <image>
+                <reportElement x="-20" y="-20" width="469" height="124" uuid="31210503-d23d-4942-b7db-220ed9d79962"/>
+                <imageExpression><![CDATA["B:/!!!!!! Semester 5/Studpen Binar/Coding Intellij/Challenge_4_Miftahul Huda Guntara/ReservasiBioskop/Header.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="143" y="50" width="141" height="39" forecolor="#030303" backcolor="#030303" uuid="a0247e60-e773-462d-9132-6e369d8fbed4"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Times New Roman" size="20" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Invoice Report]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="130" y="127" width="100" height="30" uuid="92624fcd-a94c-4489-971e-1c43a650bb2d"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Film Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="30" y="127" width="100" height="30" uuid="f1dddfe3-2026-41f5-957e-a879b2042537"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Username]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="230" y="127" width="100" height="30" uuid="0c441c47-ff89-4597-a50d-f57734691c0e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Show Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="330" y="127" width="100" height="30" uuid="a557d7b3-85ee-49f0-83f1-f0fef5b9bf7a"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Seat Detail]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="430" y="127" width="100" height="30" uuid="c6c6498a-3f02-4596-86d3-272ba2a17490"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Price]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="460" y="0" width="100" height="30" uuid="42325072-991e-486f-870c-f0639d9d9cc2"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[OrderId]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="30" y="157" width="100" height="30" uuid="b92bf378-8e57-4201-b8c0-734c7f3859df"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="230" y="157" width="100" height="30" uuid="ee8327b6-8ea8-44ed-9fd7-9fe52c828e41"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{showDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="157" width="100" height="30" uuid="ec1636a2-f040-4dae-82b4-4b0263e34f7f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{filmName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="430" y="157" width="100" height="30" uuid="2b9b4933-3c1d-4757-9170-65accbe1fa79"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="30" width="100" height="30" uuid="d547a8d6-9d3c-49b9-9495-8f6274e0fafa"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="330" y="157" width="100" height="30" uuid="ade59dd6-fd89-4a77-8ac8-030c278a8a5c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{seatDetail}]]></textFieldExpression>
+            </textField>
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="460" y="70" width="100" height="30" forecolor="#FFFFFF" uuid="1a6cdefb-dac3-4e77-b6cf-b3159c48fc69"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band splitType="Stretch"/>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>
