@@ -14,6 +14,4 @@ public interface ScheduleService {
 
     ScheduleDTO mapToDto(ScheduleEntity scheduleEntity);
     ScheduleEntity mapToEntity(ScheduleDTO scheduleDTO);
-
-    ScheduleEntity addSchedule(Long filmCode, ScheduleEntity scheduleEntity);
 }

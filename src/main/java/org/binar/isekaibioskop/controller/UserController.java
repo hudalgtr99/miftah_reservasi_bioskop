@@ -33,7 +33,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Created the user",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid username supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content)})
     @PostMapping("/create")
     public ResponseEntity<ResponseMessage> create(@RequestBody UserDTO userDTO){
@@ -47,12 +47,12 @@ public class UserController {
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Update an user by its username")
+    @Operation(summary = "Update an user by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Updated the user",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid username supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
@@ -85,12 +85,12 @@ public class UserController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @Operation(summary = "Get an user by its username")
+    @Operation(summary = "Get an user by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the user",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid username supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
@@ -119,12 +119,12 @@ public class UserController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @Operation(summary = "Delete an user by its username")
+    @Operation(summary = "Delete an user by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Deleted the user",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid username supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
