@@ -7,10 +7,11 @@ import java.util.List;
 
 public interface UserService {
     UserEntity create(UserEntity userEntity);
-    UserEntity update(String username, UserEntity userEntity);
-    Boolean delete(String username);
+    UserEntity update(Long id, UserEntity userEntity);
+    UserEntity delete(Long id);
     List<UserEntity> findAll();
-    UserEntity findById(String username);
+    UserEntity findById(Long id);
+    UserEntity findByUsername(String username);
 
     UserDTO mapToDto(UserEntity userEntity);
     UserEntity mapToEntity(UserDTO userDTO);

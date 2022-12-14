@@ -1,22 +1,16 @@
 package org.binar.isekaibioskop.entity;
 
-//import org.hibernate.Hibernate;
-//import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
-//import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@Entity
+@NoArgsConstructor
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 @Table(name = "Studios")
-public class StudioEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class StudioEntity extends BaseEntity{
 
     private String name;
 

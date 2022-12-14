@@ -8,7 +8,7 @@ import java.util.List;
 public interface SeatService {
     SeatEntity create(SeatEntity seatEntity);
     SeatEntity update(Long id, SeatEntity seatEntity);
-    Boolean delete(Long id);
+    SeatEntity delete(Long id);
     List<SeatEntity> findAll();
     SeatEntity findById(Long id);
 

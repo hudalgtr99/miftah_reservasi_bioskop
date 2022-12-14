@@ -7,8 +7,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.binar.isekaibioskop.dto.OrderDTO;
 import org.binar.isekaibioskop.entity.OrderEntity;
+import org.binar.isekaibioskop.entity.embedded.SeatDetailId;
+import org.binar.isekaibioskop.response.ResponseMessage;
 import org.binar.isekaibioskop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,11 +23,7 @@ import java.util.stream.Collectors;
 public class OrderController {
     @Autowired
     OrderService orderService;
-
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
-
+    
     @Operation(summary = "Create an order")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Created the order",
@@ -31,28 +31,16 @@ public class OrderController {
                             schema = @Schema(implementation = OrderEntity.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content)})
-
     @PostMapping("/create")
-    public OrderDTO create(@RequestBody OrderDTO request){
-        final OrderEntity orderEntity = orderService.mapToEntity(request);
-        final OrderEntity result = orderService.create(orderEntity);
-        return orderService.mapToDto(result);
-    }
+    public ResponseEntity<ResponseMessage> create(@RequestParam Long userId, Long scheduleId, SeatDetailId seatDetailEntityId){
+        OrderEntity request = orderService.create(userId, scheduleId, seatDetailEntityId);
+        OrderDTO result = orderService.mapToDto(request);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully add OrderEntity with id: " + result.getId()
+        );
 
-    @Operation(summary = "Update an order by its id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Updated the schedule",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = OrderEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
-                    content = @Content),
-            @ApiResponse(responseCode = "404", description = "Order not found",
-                    content = @Content) })
-    @PutMapping("/update/{id}")
-    public OrderDTO update(@PathVariable Long id, @RequestBody OrderDTO request){
-        final OrderEntity orderEntity = orderService.mapToEntity(request);
-        final OrderEntity result = orderService.update(id, orderEntity);
-        return orderService.mapToDto(result);
+        return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get all orders")
@@ -63,9 +51,14 @@ public class OrderController {
             @ApiResponse(responseCode = "404", description = "Order not found",
                     content = @Content) })
     @GetMapping("/all")
-    public List<OrderDTO> findAll(){
-        return orderService.findAll().stream().map(orderService::mapToDto)
+    public ResponseEntity<ResponseMessage> findAll(){
+        List<OrderDTO> result = orderService.findAll().stream().map(orderEntity -> orderService.mapToDto(orderEntity))
                 .collect(Collectors.toList());
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully retrieved all orderEntity",
+                result);
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
     @Operation(summary = "Get an order by its id")
@@ -78,8 +71,17 @@ public class OrderController {
             @ApiResponse(responseCode = "404", description = "Order not found",
                     content = @Content) })
     @GetMapping("/{id}")
-    public OrderEntity findOne(@PathVariable Long id){
-        return orderService.findById(id);
+    public ResponseEntity<ResponseMessage> findById(@PathVariable("id") Long id){
+
+        OrderEntity orderEntity = orderService.findById(id);
+        OrderDTO result = orderService.mapToDto(orderEntity);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully retrieved order with id : " + orderEntity.getId(),
+                result
+        );
+
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
     @Operation(summary = "Delete an order by its id")
@@ -92,7 +94,13 @@ public class OrderController {
             @ApiResponse(responseCode = "404", description = "Order not found",
                     content = @Content) })
     @DeleteMapping("/delete/{id}")
-    public Boolean delete(@PathVariable Long id){
-        return orderService.delete(id);
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id){
+        OrderEntity result = orderService.delete(id);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "successfully deleted order with id : " + result.getId()
+        );
+
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 }

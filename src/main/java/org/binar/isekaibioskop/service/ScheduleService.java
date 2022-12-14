@@ -8,7 +8,7 @@ import java.util.List;
 public interface ScheduleService {
     ScheduleEntity create(ScheduleEntity scheduleEntity);
     ScheduleEntity update(Long id, ScheduleEntity scheduleEntity);
-    Boolean delete(Long id);
+    ScheduleEntity delete(Long id);
     List<ScheduleEntity> findAll();
     ScheduleEntity findById(Long id);
 

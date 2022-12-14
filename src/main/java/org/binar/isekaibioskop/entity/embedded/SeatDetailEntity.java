@@ -1,6 +1,9 @@
 package org.binar.isekaibioskop.entity.embedded;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.binar.isekaibioskop.entity.OrderEntity;
 import org.binar.isekaibioskop.entity.SeatEntity;
 import org.binar.isekaibioskop.entity.StudioEntity;
 
@@ -11,6 +14,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties(value = {"orderEntity"}, allowGetters = true)
 @Table(name = "Seat_Details")
 public class SeatDetailEntity{
 
@@ -33,4 +38,8 @@ public class SeatDetailEntity{
     )
     @JoinColumn(name = "Seats_id")
     private SeatEntity seatEntity;
+
+    @OneToOne(mappedBy = "seatDetailEntity", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private OrderEntity orderEntity;
 }
