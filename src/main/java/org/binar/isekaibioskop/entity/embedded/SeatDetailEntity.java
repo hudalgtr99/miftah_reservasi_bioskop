@@ -1,25 +1,29 @@
 package org.binar.isekaibioskop.entity.embedded;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
-import org.binar.isekaibioskop.entity.OrderEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.binar.isekaibioskop.entity.SeatEntity;
 import org.binar.isekaibioskop.entity.StudioEntity;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"orderEntity"}, allowGetters = true)
 @Table(name = "Seat_Details")
 public class SeatDetailEntity{
 
     @EmbeddedId
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "SeatDetail_id")
     private SeatDetailId seatDetailId;
 
@@ -39,7 +43,16 @@ public class SeatDetailEntity{
     @JoinColumn(name = "Seats_id")
     private SeatEntity seatEntity;
 
-    @OneToOne(mappedBy = "seatDetailEntity", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private OrderEntity orderEntity;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        SeatDetailEntity that = (SeatDetailEntity) o;
+        return seatDetailId != null && Objects.equals(seatDetailId, that.seatDetailId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(seatDetailId);
+    }
 }

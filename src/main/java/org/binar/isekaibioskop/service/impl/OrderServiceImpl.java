@@ -4,13 +4,10 @@ import org.binar.isekaibioskop.dto.OrderDTO;
 import org.binar.isekaibioskop.entity.OrderEntity;
 import org.binar.isekaibioskop.entity.ScheduleEntity;
 import org.binar.isekaibioskop.entity.UserEntity;
-import org.binar.isekaibioskop.entity.embedded.SeatDetailEntity;
-import org.binar.isekaibioskop.entity.embedded.SeatDetailId;
 import org.binar.isekaibioskop.exception.DataNotFoundException;
 import org.binar.isekaibioskop.repository.OrderRepository;
 import org.binar.isekaibioskop.repository.ScheduleRepository;
 import org.binar.isekaibioskop.repository.UserRepository;
-import org.binar.isekaibioskop.repository.embedded.SeatDetailRepository;
 import org.binar.isekaibioskop.service.OrderService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -36,11 +33,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ScheduleRepository scheduleRepository;
 
-    @Autowired
-    SeatDetailRepository seatDetailRepository;
-
     @Override
-    public OrderEntity create(Long userId, Long scheduleId, SeatDetailId seatDetailEntityId) {
+    public OrderEntity create(Long userId, Long scheduleId) {
         UserEntity userEntity = userRepository.findById(userId)
                 .orElseThrow(() -> {
                     DataNotFoundException exception = new DataNotFoundException("userEntity", "id", userId.toString());
@@ -55,17 +49,10 @@ public class OrderServiceImpl implements OrderService {
                     throw exception;
                 });
 
-        SeatDetailEntity seatDetailEntity = seatDetailRepository.findById(seatDetailEntityId)
-                .orElseThrow(() -> {
-                    DataNotFoundException exception = new DataNotFoundException("seatDetailEntity", "id", seatDetailEntityId.toString());
-                    exception.setApiResponse();
-                    throw exception;
-                });
 
         OrderEntity orderEntity = OrderEntity.builder()
                 .userDetails(userEntity)
                 .scheduleDetails(scheduleEntity)
-                .seatDetailEntity(seatDetailEntity)
                 .build();
 
         return orderRepository.save(orderEntity);

@@ -17,5 +17,5 @@ public class OrderDTO{
         Long id;
         UserDTO userDetails;
         ScheduleDTO scheduleDetails;
-        SeatDetailEntity seatDetailEntity;
+        FilmDTO filmDetails;
 }

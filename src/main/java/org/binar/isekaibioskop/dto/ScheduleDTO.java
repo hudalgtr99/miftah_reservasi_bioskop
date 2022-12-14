@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ScheduleDTO{
     Long id;
-    FilmDTO filmDetails;
     String showDate;
     String startTime;
     String endTime;

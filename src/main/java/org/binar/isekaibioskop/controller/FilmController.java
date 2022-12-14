@@ -37,7 +37,7 @@ public class FilmController {
         FilmEntity filmEntity = filmService.create(request);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "Successfully add film with id: " + filmEntity.getId()
+                "Successfully add film with code: " + filmEntity.getId()
         );
 
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);

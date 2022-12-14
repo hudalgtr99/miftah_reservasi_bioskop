@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class SeatEntity extends BaseEntity{
 
     @Column(name = "seat_row")
-    private Character seatRow;
+    private String seatRow;
 
     @Column(name = "seat_number")
     private Integer seatNumber;

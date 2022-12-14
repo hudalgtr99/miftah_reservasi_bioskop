@@ -22,7 +22,6 @@ public class OrderEntity extends BaseEntity {
     private ScheduleEntity scheduleDetails;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
-    @JoinColumn(name = "seatDetail_id")
-    private SeatDetailEntity seatDetailEntity;
-
+    @JoinColumn(name = "film_code")
+    private FilmEntity filmDetails;
 }

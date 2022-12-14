@@ -2,6 +2,7 @@ package org.binar.isekaibioskop.service;
 
 import org.binar.isekaibioskop.dto.ScheduleDTO;
 import org.binar.isekaibioskop.entity.ScheduleEntity;
+import org.binar.isekaibioskop.entity.UserEntity;
 
 import java.util.List;
 

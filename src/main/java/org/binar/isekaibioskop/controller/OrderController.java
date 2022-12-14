@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.binar.isekaibioskop.dto.OrderDTO;
 import org.binar.isekaibioskop.entity.OrderEntity;
-import org.binar.isekaibioskop.entity.embedded.SeatDetailId;
 import org.binar.isekaibioskop.response.ResponseMessage;
 import org.binar.isekaibioskop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +31,8 @@ public class OrderController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content)})
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> create(@RequestParam Long userId, Long scheduleId, SeatDetailId seatDetailEntityId){
-        OrderEntity request = orderService.create(userId, scheduleId, seatDetailEntityId);
+    public ResponseEntity<ResponseMessage> create(@RequestParam Long userId, Long scheduleId){
+        OrderEntity request = orderService.create(userId, scheduleId);
         OrderDTO result = orderService.mapToDto(request);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,

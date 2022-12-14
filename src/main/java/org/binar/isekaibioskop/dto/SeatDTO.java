@@ -12,8 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class SeatDTO{
-    Long id;
-    Character seatRow;
+    String seatRow;
     Integer seatNumber;
     Boolean fullStatus;
 }

@@ -37,7 +37,7 @@ public class ScheduleController {
         ScheduleEntity scheduleEntity = scheduleService.create(request);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "Successfully add schedule with id: " + scheduleEntity.getId()
+                "Successfully add user with id: " + scheduleEntity.getId()
         );
 
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);

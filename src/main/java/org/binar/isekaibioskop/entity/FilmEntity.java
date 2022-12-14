@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt", "orderDetail"}, allowGetters = true)
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt", "orderEntity"}, allowGetters = true)
 @Table(name = "Films")
 public class FilmEntity extends BaseEntity{
 
@@ -31,5 +30,5 @@ public class FilmEntity extends BaseEntity{
 
     @OneToOne(mappedBy = "filmDetails", cascade = CascadeType.ALL)
     @JsonIgnore
-    private ScheduleEntity scheduleEntity;
+    private OrderEntity orderEntity;
 }

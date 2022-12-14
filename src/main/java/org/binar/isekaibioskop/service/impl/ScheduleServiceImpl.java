@@ -1,8 +1,11 @@
 package org.binar.isekaibioskop.service.impl;
 
 import org.binar.isekaibioskop.dto.ScheduleDTO;
+import org.binar.isekaibioskop.entity.FilmEntity;
 import org.binar.isekaibioskop.entity.ScheduleEntity;
+import org.binar.isekaibioskop.entity.UserEntity;
 import org.binar.isekaibioskop.exception.DataNotFoundException;
+import org.binar.isekaibioskop.repository.FilmRepository;
 import org.binar.isekaibioskop.repository.ScheduleRepository;
 import org.binar.isekaibioskop.service.ScheduleService;
 import org.modelmapper.ModelMapper;
@@ -24,6 +27,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
     ScheduleRepository scheduleRepository;
+
+    @Autowired
+    FilmRepository filmRepository;
 
     @Override
     public ScheduleEntity create(ScheduleEntity scheduleEntity) {

@@ -13,11 +13,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class FilmDTO{
-        Long code;
         String name;
         String description;
         Integer duration;
         String language;
         Boolean showStatus;
-        ScheduleDTO scheduleDetails;
 }
