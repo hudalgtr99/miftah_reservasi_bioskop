@@ -9,7 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 public interface FilmService {
     FilmEntity create(FilmEntity filmEntity);
     FilmEntity update(Long code, FilmEntity filmEntity);
-    Boolean delete(Long code);
+    FilmEntity delete(Long code);
     List<FilmEntity> findAll();
     FilmEntity findById(Long code);
 

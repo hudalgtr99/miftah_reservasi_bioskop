@@ -1,18 +1,21 @@
 package org.binar.isekaibioskop.dto;
 
-import org.binar.isekaibioskop.entity.FilmEntity;
-import org.binar.isekaibioskop.entity.ScheduleEntity;
-import org.binar.isekaibioskop.entity.UserEntity;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.binar.isekaibioskop.entity.embedded.SeatDetailEntity;
 
-import java.util.List;
 
-public record OrderDTO(
-        Long id,
-        UserEntity userEntity,
-        FilmEntity filmEntity,
-//        ScheduleEntity scheduleEntity,
-        List<SeatDetailEntity> seatDetailEntities,
-        Integer quantity
-) {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
+public class OrderDTO{
+        Long id;
+        UserDTO userDetails;
+        ScheduleDTO scheduleDetails;
+        FilmDTO filmDetails;
 }

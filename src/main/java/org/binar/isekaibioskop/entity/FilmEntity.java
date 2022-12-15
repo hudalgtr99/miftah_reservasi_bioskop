@@ -1,20 +1,20 @@
 package org.binar.isekaibioskop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt", "orderEntity"}, allowGetters = true)
 @Table(name = "Films")
-public class FilmEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long code;
+public class FilmEntity extends BaseEntity{
 
     private String name;
 
@@ -28,7 +28,7 @@ public class FilmEntity {
     @Column(name = "show_status")
     private Boolean showStatus;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "schedule_id")
-    private List<ScheduleEntity> scheduleEntities;
+    @OneToOne(mappedBy = "filmDetails", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private OrderEntity orderEntity;
 }

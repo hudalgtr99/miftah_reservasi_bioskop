@@ -1,7 +1,8 @@
 package org.binar.isekaibioskop.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,18 +10,11 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt", "orderEntity"}, allowGetters = true)
 @Table(name = "Schedules")
-public class ScheduleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ScheduleEntity extends BaseEntity{
 
-    @ManyToOne(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(name = "Films_code", referencedColumnName = "code")
-    private FilmEntity filmEntity;
 
     @Column(name = "show_date")
     private String showDate;
@@ -32,4 +26,8 @@ public class ScheduleEntity {
     private String endTime;
 
     private BigDecimal price;
+
+    @OneToOne(mappedBy = "scheduleDetails", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private OrderEntity orderEntity;
 }

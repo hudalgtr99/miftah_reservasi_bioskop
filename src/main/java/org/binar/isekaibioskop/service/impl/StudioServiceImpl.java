@@ -1,76 +1,94 @@
 package org.binar.isekaibioskop.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.binar.isekaibioskop.dto.StudioDTO;
 import org.binar.isekaibioskop.entity.StudioEntity;
+import org.binar.isekaibioskop.exception.DataNotFoundException;
 import org.binar.isekaibioskop.repository.StudioRepository;
 import org.binar.isekaibioskop.service.StudioService;
+import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
 public class StudioServiceImpl implements StudioService {
 
+    private static final String ENTITY = "studioEntity";
+    private final Logger log =  LoggerFactory.getLogger(StudioServiceImpl.class);
+
     @Autowired
     StudioRepository studioRepository;
 
-
     @Override
     public StudioEntity create(StudioEntity studioEntity) {
-        StudioEntity result = studioRepository.save(studioEntity);
-        return result;
+        log.info("Has successfully created studio data!");
+        return studioRepository.save(studioEntity);
     }
 
     @Override
     public StudioEntity update(Long id, StudioEntity studioEntity) {
-        StudioEntity result = findById(id);
-        if (result != null) {
-            result.setName(studioEntity.getName());
-            result.setFullStatus(studioEntity.getFullStatus());
-            return studioRepository.save(result);
-        }
-        return null;
+        StudioEntity result = studioRepository.findById(id)
+                .orElseThrow(() -> {
+                    DataNotFoundException exception = new DataNotFoundException(ENTITY, "id", id.toString());
+                    log.info("Error");
+                    exception.setApiResponse();
+                    throw exception;
+                });
+
+        result.setName(studioEntity.getName());
+        result.setFullStatus(studioEntity.getFullStatus());
+        studioRepository.save(result);
+        log.info("Has successfully updated studio data!");
+        return result;
     }
 
     @Override
-    public Boolean delete(Long id) {
-        StudioEntity result = findById(id);
-        if (result != null) {
-            studioRepository.deleteById(id);
-            return true;
-        }
-
-        return false;
+    public StudioEntity delete(Long id) {
+        StudioEntity result = studioRepository.findById(id)
+                .orElseThrow(() -> {
+                    DataNotFoundException exception = new DataNotFoundException(ENTITY, "id", id.toString());
+                    log.info("Error");
+                    exception.setApiResponse();
+                    throw exception;
+                });
+        studioRepository.delete(result);
+        log.info("Has successfully deleted studio data!");
+        return result;
     }
 
     @Override
     public List<StudioEntity> findAll() {
+        log.info("Has successfully found all studio data!");
         return studioRepository.findAll();
     }
-
     @Override
     public StudioEntity findById(Long id) {
-        Optional<StudioEntity> result = studioRepository.findById(id);
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        StudioEntity studioEntity = studioRepository.findById(id)
+                .orElseThrow(() -> {
+                    DataNotFoundException exception = new DataNotFoundException(ENTITY, "id", id.toString());
+                    log.info("Error");
+                    exception.setApiResponse();
+                    throw exception;
+                });
+        log.info("Has successfully found studio data from id " + id);
+        return studioEntity;
     }
 
-    ObjectMapper mapper = new ObjectMapper();
+    ModelMapper mapper = new ModelMapper();
 
     @Override
     public StudioDTO mapToDto(StudioEntity studioEntity) {
-        return mapper.convertValue(studioEntity, StudioDTO.class);
+        return mapper.map(studioEntity, StudioDTO.class);
     }
 
     @Override
     public StudioEntity mapToEntity(StudioDTO studioDTO) {
-        return mapper.convertValue(studioDTO, StudioEntity.class);
+        return mapper.map(studioDTO, StudioEntity.class);
     }
+
 }

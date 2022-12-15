@@ -2,14 +2,14 @@ package org.binar.isekaibioskop.service;
 
 import org.binar.isekaibioskop.dto.OrderDTO;
 import org.binar.isekaibioskop.entity.OrderEntity;
+import org.binar.isekaibioskop.entity.embedded.SeatDetailId;
 
 import java.util.List;
 
 public interface OrderService {
 
-    OrderEntity create(OrderEntity orderEntity);
-    OrderEntity update(Long id, OrderEntity orderEntity);
-    Boolean delete(Long id);
+    OrderEntity create(String userId, Long scheduleId);
+    OrderEntity delete(Long id);
     List<OrderEntity> findAll();
 
     OrderEntity findById(Long id);

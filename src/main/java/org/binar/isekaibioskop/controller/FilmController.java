@@ -7,8 +7,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.binar.isekaibioskop.dto.FilmDTO;
 import org.binar.isekaibioskop.entity.FilmEntity;
+import org.binar.isekaibioskop.response.ResponseMessage;
 import org.binar.isekaibioskop.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,29 +29,38 @@ public class FilmController {
             @ApiResponse(responseCode = "200", description = "Created the film",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = FilmEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid code supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content)})
     @PostMapping("/create")
-    public FilmDTO create(@RequestBody FilmDTO request){
-        final FilmEntity filmEntity = filmService.mapToEntity(request);
-        final FilmEntity result = filmService.create(filmEntity);
-        return filmService.mapToDto(result);
+    public ResponseEntity<ResponseMessage> create(@RequestBody FilmDTO filmDTO){
+        FilmEntity request = filmService.mapToEntity(filmDTO);
+        FilmEntity filmEntity = filmService.create(request);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully add film with code: " + filmEntity.getId()
+        );
+
+        return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Update an film by its code")
+    @Operation(summary = "Update an film by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Updated the film",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = FilmEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid code supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid film id supplied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "Film not found",
                     content = @Content) })
-    @PutMapping("/update/{code}")
-    public FilmDTO update(@PathVariable Long code, @RequestBody FilmDTO request){
-        final FilmEntity filmEntity = filmService.mapToEntity(request);
-        final FilmEntity result = filmService.update(code, filmEntity);
-        return filmService.mapToDto(result);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ResponseMessage> update(@PathVariable Long id, @RequestBody FilmDTO filmDTO) {
+        FilmEntity request = filmService.mapToEntity(filmDTO);
+        FilmEntity filmEntity = filmService.update(id, request);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully updated film with id : " + filmEntity.getId()
+        );
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
     @Operation(summary = "Get all films")
@@ -59,36 +71,55 @@ public class FilmController {
             @ApiResponse(responseCode = "404", description = "Film not found",
                     content = @Content) })
     @GetMapping("/get/all")
-    public List<FilmDTO> findAll(){
-        return filmService.findAll().stream().map(filmEntity -> filmService.mapToDto(filmEntity))
+    public ResponseEntity<ResponseMessage> findAll(){
+        List<FilmDTO> result = filmService.findAll().stream().map(filmEntity -> filmService.mapToDto(filmEntity))
                 .collect(Collectors.toList());
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully retrieved all film",
+                result);
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @Operation(summary = "Get an film by its code")
+    @Operation(summary = "Get an film by its id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the order",
+            @ApiResponse(responseCode = "200", description = "Found the film",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = FilmEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid code supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Order not found",
+            @ApiResponse(responseCode = "404", description = "Film not found",
                     content = @Content) })
-    @GetMapping("/get/{code}")
-    public FilmEntity findOne(@PathVariable Long code){
-        return filmService.findById(code);
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<ResponseMessage> findById(@PathVariable("id") Long id){
+
+        FilmEntity filmEntity = filmService.findById(id);
+        FilmDTO result = filmService.mapToDto(filmEntity);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "Successfully retrieved film with id : " + filmEntity.getId(), result
+        );
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @Operation(summary = "Delete an film by its code")
+    @Operation(summary = "Delete an film by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Deleted the film",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = FilmEntity.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid code supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "Film not found",
                     content = @Content) })
-    @DeleteMapping("delete/{code}")
-    public Boolean delete(@PathVariable Long code){
-        return filmService.delete(code);
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id){
+        FilmEntity result = filmService.delete(id);
+        ResponseMessage responseMessage = new ResponseMessage(
+                Boolean.TRUE,
+                "successfully deleted film with id : " + result.getId()
+        );
+
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
+
 }

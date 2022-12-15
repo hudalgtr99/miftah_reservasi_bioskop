@@ -8,7 +8,7 @@ import java.util.List;
 public interface StudioService {
     StudioEntity create(StudioEntity studioEntity);
     StudioEntity update(Long id, StudioEntity studioEntity);
-    Boolean delete(Long id);
+    StudioEntity delete(Long id);
     List<StudioEntity> findAll();
     StudioEntity findById(Long id);
 
