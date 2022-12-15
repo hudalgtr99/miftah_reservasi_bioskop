@@ -13,8 +13,10 @@ import org.binar.isekaibioskop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +29,28 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @PostConstruct
+    public void initRolesAndUsers(){
+        userService.initRolesAndUser();
+    }
+
+    @PostMapping("/registerNewUser")
+    public UserEntity registerNewUser(@RequestBody UserEntity userEntity){
+        return userService.registerNewUser(userEntity);
+    }
+
+    @GetMapping("/forAdmin")
+    @PreAuthorize("hasRole('Admin')")
+    public String forAdmin(){
+        return "This URL is only accesible to admin";
+    }
+
+    @GetMapping("/forUser" )
+    @PreAuthorize("hasRole('User')")
+    public String forUser(){
+        return "This URL is only accesible to the user";
+    }
 
     @Operation(summary = "Create an user")
     @ApiResponses(value = {
@@ -41,7 +65,7 @@ public class UserController {
         UserEntity userEntity = userService.create(request);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "Successfully add user with id: " + userEntity.getId()
+                "Successfully add user with id: " + userEntity.getUsername()
         );
 
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
@@ -56,13 +80,13 @@ public class UserController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
-    @PutMapping("/update/{id}")
-    public ResponseEntity<ResponseMessage> update(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    @PutMapping("/update/{username}")
+    public ResponseEntity<ResponseMessage> update(@PathVariable String username, @RequestBody UserDTO userDTO) {
         UserEntity request = userService.mapToEntity(userDTO);
-        UserEntity userEntity = userService.update(id, request);
+        UserEntity userEntity = userService.update(username, request);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "Successfully updated user with id : " + userEntity.getId()
+                "Successfully updated user with id : " + userEntity.getUsername()
         );
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
@@ -95,29 +119,29 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
     @GetMapping("/getById/{id}")
-    public ResponseEntity<ResponseMessage> findById(@PathVariable("id") Long id){
+    public ResponseEntity<ResponseMessage> findById(@PathVariable("id") String username){
 
-        UserEntity userEntity = userService.findById(id);
+        UserEntity userEntity = userService.findById(username);
         UserDTO result = userService.mapToDto(userEntity);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "Successfully retrieved user with id : " + userEntity.getId(), result
+                "Successfully retrieved user with id : " + userEntity.getUsername(), result
         );
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @GetMapping("/getByUsername/{username}")
-    public ResponseEntity<ResponseMessage> findByUsername(@PathVariable("username") String username) {
-        UserEntity userEntity = userService.findByUsername(username);
-        UserDTO result = userService.mapToDto(userEntity);
-        ResponseMessage responseMessage = new ResponseMessage(
-                Boolean.TRUE,
-                "successfully retrieved user with username : " + userEntity.getUsername(),
-                result
-        );
-
-        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
-    }
+//    @GetMapping("/getByUsername/{username}")
+//    public ResponseEntity<ResponseMessage> findByUsername(@PathVariable("username") String username) {
+//        UserEntity userEntity = userService.findByUsername(username);
+//        UserDTO result = userService.mapToDto(userEntity);
+//        ResponseMessage responseMessage = new ResponseMessage(
+//                Boolean.TRUE,
+//                "successfully retrieved user with username : " + userEntity.getUsername(),
+//                result
+//        );
+//
+//        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+//    }
 
     @Operation(summary = "Delete an user by its id")
     @ApiResponses(value = {
@@ -128,12 +152,12 @@ public class UserController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id){
-        UserEntity result = userService.delete(id);
+    @DeleteMapping("delete/{username}")
+    public ResponseEntity<ResponseMessage> delete(@PathVariable String username){
+        UserEntity result = userService.delete(username);
         ResponseMessage responseMessage = new ResponseMessage(
                 Boolean.TRUE,
-                "successfully deleted user with id : " + result.getId()
+                "successfully deleted user with id : " + result.getUsername()
         );
 
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);

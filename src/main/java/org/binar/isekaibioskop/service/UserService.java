@@ -6,12 +6,16 @@ import org.binar.isekaibioskop.entity.UserEntity;
 import java.util.List;
 
 public interface UserService {
+
+    UserEntity registerNewUser(UserEntity userEntity);
+    void initRolesAndUser();
+
     UserEntity create(UserEntity userEntity);
-    UserEntity update(Long id, UserEntity userEntity);
-    UserEntity delete(Long id);
+    UserEntity update(String username, UserEntity userEntity);
+    UserEntity delete(String username);
     List<UserEntity> findAll();
-    UserEntity findById(Long id);
-    UserEntity findByUsername(String username);
+    UserEntity findById(String username);
+//    UserEntity findByUsername(String username);
 
     UserDTO mapToDto(UserEntity userEntity);
     UserEntity mapToEntity(UserDTO userDTO);

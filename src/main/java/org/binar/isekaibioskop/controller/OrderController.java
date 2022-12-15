@@ -31,7 +31,7 @@ public class OrderController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content)})
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> create(@RequestParam Long userId, Long scheduleId){
+    public ResponseEntity<ResponseMessage> create(@RequestParam String userId, Long scheduleId){
         OrderEntity request = orderService.create(userId, scheduleId);
         OrderDTO result = orderService.mapToDto(request);
         ResponseMessage responseMessage = new ResponseMessage(

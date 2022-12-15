@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    OrderEntity create(Long userId, Long scheduleId);
+    OrderEntity create(String userId, Long scheduleId);
     OrderEntity delete(Long id);
     List<OrderEntity> findAll();
 

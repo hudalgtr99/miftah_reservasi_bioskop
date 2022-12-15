@@ -34,10 +34,10 @@ public class OrderServiceImpl implements OrderService {
     ScheduleRepository scheduleRepository;
 
     @Override
-    public OrderEntity create(Long userId, Long scheduleId) {
+    public OrderEntity create(String userId, Long scheduleId) {
         UserEntity userEntity = userRepository.findById(userId)
                 .orElseThrow(() -> {
-                    DataNotFoundException exception = new DataNotFoundException("userEntity", "id", userId.toString());
+                    DataNotFoundException exception = new DataNotFoundException("userEntity", "id", userId);
                     exception.setApiResponse();
                     throw exception;
                 });
