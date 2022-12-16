@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PushNotificationController {
 
-    private PushNotificationService pushNotificationService;
+    private final PushNotificationService pushNotificationService;
 
     public PushNotificationController(PushNotificationService pushNotificationService) {
         this.pushNotificationService = pushNotificationService;
