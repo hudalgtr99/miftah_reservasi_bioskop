@@ -2,7 +2,7 @@ package org.binar.isekaibioskop.controller;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import org.binar.isekaibioskop.service.InvoiceService;
+import org.binar.isekaibioskop.invoice.InvoiceService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class InvoiceController {
         JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(
                 InvoiceService.generateInvoiceList());
         JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/JasperInvoice.jrxml"));
+                .compileReport(new FileInputStream("src/main/resources/jasper/JasperInvoice.jrxml"));
 
         HashMap<String, Object> map = new HashMap<>();
         JasperPrint report = JasperFillManager.fillReport(compileReport, map, jrBeanCollectionDataSource);
@@ -34,7 +34,7 @@ public class InvoiceController {
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(
                 InvoiceService.generateInvoiceList());
         JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/JasperInvoice.jrxml"));
+                .compileReport(new FileInputStream("src/main/resources/jasper/JasperInvoice.jrxml"));
 
         HashMap<String, Object> map = new HashMap<>();
         JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);

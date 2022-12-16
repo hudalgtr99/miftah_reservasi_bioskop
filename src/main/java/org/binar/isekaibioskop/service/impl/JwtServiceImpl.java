@@ -1,9 +1,9 @@
-package org.binar.isekaibioskop.service;
+package org.binar.isekaibioskop.service.impl;
 
 
 import org.binar.isekaibioskop.entity.UserEntity;
 import org.binar.isekaibioskop.repository.UserRepository;
-import org.binar.isekaibioskop.response.JwtRequest;
+import org.binar.isekaibioskop.request.JwtRequest;
 import org.binar.isekaibioskop.response.JwtResponse;
 import org.binar.isekaibioskop.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class JwtService implements UserDetailsService {
+public class JwtServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

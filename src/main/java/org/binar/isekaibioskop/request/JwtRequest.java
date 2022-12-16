@@ -1,4 +1,4 @@
-package org.binar.isekaibioskop.response;
+package org.binar.isekaibioskop.request;
 
 import lombok.Getter;
 import lombok.Setter;
