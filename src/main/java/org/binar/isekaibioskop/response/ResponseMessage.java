@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 @Data
+@NoArgsConstructor
 @JsonPropertyOrder({
         "success",
         "message"
@@ -24,9 +26,6 @@ public class ResponseMessage {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private transient Object data;
-
-    public ResponseMessage() {
-    }
 
     public ResponseMessage(Boolean success, String message) {
         this.success = success;

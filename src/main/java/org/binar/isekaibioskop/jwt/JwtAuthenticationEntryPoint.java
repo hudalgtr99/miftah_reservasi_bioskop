@@ -1,4 +1,4 @@
-package org.binar.isekaibioskop.config;
+package org.binar.isekaibioskop.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

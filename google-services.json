@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "723367610671",
+    "firebase_url": "https://fir-db-for-spring-boot-d07b1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fir-db-for-spring-boot-d07b1",
+    "storage_bucket": "fir-db-for-spring-boot-d07b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723367610671:android:9013beb523a5a8cea539da",
+        "android_client_info": {
+          "package_name": "com.binar.academy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723367610671-rp3lgao7881dcbf7lrrt7qm09ht5751v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDIOuyqXH0g_goobvjmLf8CAXL5Us5ld8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723367610671-rp3lgao7881dcbf7lrrt7qm09ht5751v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

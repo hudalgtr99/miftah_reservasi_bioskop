@@ -1,5 +1,7 @@
 package org.binar.isekaibioskop.config;
 
+import org.binar.isekaibioskop.jwt.JwtAuthenticationEntryPoint;
+import org.binar.isekaibioskop.jwt.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
-package org.binar.isekaibioskop.config;
+package org.binar.isekaibioskop.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import org.binar.isekaibioskop.service.JwtService;
+import org.binar.isekaibioskop.service.impl.JwtServiceImpl;
 import org.binar.isekaibioskop.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +24,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private JwtService jwtService;
+    private JwtServiceImpl jwtServiceImpl;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -50,7 +50,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = jwtService.loadUserByUsername(userName);
+            UserDetails userDetails = jwtServiceImpl.loadUserByUsername(userName);
 
             if(jwtUtil.validateToken(jwtToken, userDetails)){
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
